@@ -16,6 +16,24 @@
 class Robot : public frc::TimedRobot
 {
 
+private:
+    //Joysticks
+    frc::Joystick m_stick{0};
+    // frc::PWMSparkMax m_motor{0};
+
+    // Side wheels
+    static const int leftLeadDeviceID = 1, leftFollowDeviceID = 2, rightLeadDeviceID = 3, rightFollowDeviceID = 4;
+    rev::CANSparkMax m_leftLeadMotor{leftLeadDeviceID, rev::CANSparkMax::MotorType::kBrushed};
+    rev::CANSparkMax m_rightLeadMotor{rightLeadDeviceID, rev::CANSparkMax::MotorType::kBrushed};
+    rev::CANSparkMax m_leftFollowMotor{leftFollowDeviceID, rev::CANSparkMax::MotorType::kBrushed};
+    rev::CANSparkMax m_rightFollowMotor{rightFollowDeviceID, rev::CANSparkMax::MotorType::kBrushed};
+
+    static const int centerOmniMotor = 2;
+
+    
+
+    frc::DoubleSolenoid s_doubleSolenoid{frc::PneumaticsModuleType::CTREPCM, 1, 2};
+
 public:
     void RobotInit() override{
         //m_chooser.SetDefaultOption(kAutoNameDefault, kAutoNameDefault);
@@ -82,8 +100,10 @@ public:
 	void TeleopPeriodic() override
 	{
 
-		double leftInput = m_stick.GetRawAxis(1);
+		double leftInput = m_stick.GetRawAxis(1) * -1;
 		double rightInput = m_stick.GetRawAxis(5);
+        double leftTrigger = m_stick.GetRawAxis(2);
+        double rightTrigger = m_stick.GetRawAxis(3);
 
 		m_leftLeadMotor.Set(leftInput);
 		m_rightLeadMotor.Set(rightInput);
@@ -100,23 +120,6 @@ public:
     void Robot::SimulationInit() override {}
 
     void Robot::SimulationPeriodic() override {}
-	
-
-	private:
-		//Joysticks
-		frc::Joystick m_stick{0};
-		// frc::PWMSparkMax m_motor{0};
-
-		// Side wheels
-		static const int leftLeadDeviceID = 1, leftFollowDeviceID = 2, rightLeadDeviceID = 3, rightFollowDeviceID = 4;
-		rev::CANSparkMax m_leftLeadMotor{leftLeadDeviceID, rev::CANSparkMax::MotorType::kBrushed};
-		rev::CANSparkMax m_rightLeadMotor{rightLeadDeviceID, rev::CANSparkMax::MotorType::kBrushed};
-		rev::CANSparkMax m_leftFollowMotor{leftFollowDeviceID, rev::CANSparkMax::MotorType::kBrushed};
-		rev::CANSparkMax m_rightFollowMotor{rightFollowDeviceID, rev::CANSparkMax::MotorType::kBrushed};
-
-		
-		frc::DoubleSolenoid m_doubleSolenoid{frc::PneumaticsModuleType::CTREPCM, 1,
-										2};
 };
 
 #ifndef RUNNING_FRC_TESTS
