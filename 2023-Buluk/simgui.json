@@ -1,0 +1,50 @@
+{
+  "HALProvider": {
+    "Other Devices": {
+      "Compressor[0]": {
+        "header": {
+          "open": true
+        }
+      },
+      "SPARK MAX [1]": {
+        "header": {
+          "open": true
+        }
+      },
+      "SPARK MAX [3]": {
+        "header": {
+          "open": true
+        }
+      }
+    },
+    "PWM Outputs": {
+      "window": {
+        "visible": true
+      }
+    },
+    "Solenoids": {
+      "0": {
+        "header": {
+          "open": true
+        }
+      },
+      "window": {
+        "visible": true
+      }
+    }
+  },
+  "NTProvider": {
+    "types": {
+      "/FMSInfo": "FMSInfo",
+      "/LiveWindow/Ungrouped/PWMVictorSPX[3]": "Motor Controller",
+      "/LiveWindow/Ungrouped/PWMVictorSPX[4]": "Motor Controller"
+    }
+  },
+  "NetworkTables": {
+    "transitory": {
+      "SmartDashboard": {
+        "open": true
+      }
+    }
+  }
+}
