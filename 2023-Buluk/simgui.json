@@ -42,6 +42,11 @@
   },
   "NetworkTables": {
     "transitory": {
+      "LiveWindow": {
+        ".status": {
+          "open": true
+        }
+      },
       "SmartDashboard": {
         "open": true
       }
